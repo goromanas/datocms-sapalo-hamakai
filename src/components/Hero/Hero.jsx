@@ -34,8 +34,14 @@ const ArrowDownImage = styled.img`
   width: 50px;
   height: 50px;
   left: 50%;
-  bottom: 2%;
+  bottom: 0;
   transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+
+  &:hover {
+    transform: translate(-50%, -20%);
+  }
 `
 
 const HeroImage = styled.img`
@@ -56,7 +62,7 @@ const Hero = () => {
         }
         logo {
           fluid(
-            maxWidth: 200
+            maxWidth: 2000
             forceBlurhash: false
             imgixParams: { fm: "jpg", auto: "compress" }
           ) {
@@ -75,7 +81,7 @@ const Hero = () => {
       <StyledHero>
         <HeroImage src={HeroImageSrc} />
       </StyledHero>
-      <ArrowDownImage src={ArrowDown} />
+      <ArrowDownImage src={ArrowDown} colors={colors} />
     </Section>
   )
 }

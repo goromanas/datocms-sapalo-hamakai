@@ -5,6 +5,7 @@ module.exports = {
     title: `Creative Portfolio`
   },
   plugins: [
+    `gatsby-plugin-anchor-links`,
     `gatsby-plugin-antd`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import styled from 'styled-components'
 
 import { colors } from '../../config/colors'
@@ -27,6 +28,7 @@ const Menu = ({ className }) => {
           node {
             title
             id
+            generalLink
           }
         }
       }
@@ -37,7 +39,9 @@ const Menu = ({ className }) => {
     <MenuWrapper className={className}>
       {data.allDatoCmsMenu.edges.map(item => (
         <MenuItem key={item.node.id} colors={colors}>
-          {item.node.title}
+          <AnchorLink to={`/#${item.node.generalLink}`}>
+            {item.node.title}
+          </AnchorLink>
         </MenuItem>
       ))}
     </MenuWrapper>

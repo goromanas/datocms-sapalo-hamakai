@@ -5,3 +5,11 @@
   box-sizing: border-box;
   font-family: 'Noto Sans TC', sans-serif;
 }
+
+a {
+  color: #fff !important;
+
+  &:hover {
+    color:#FA4426 !important;
+  }
+}

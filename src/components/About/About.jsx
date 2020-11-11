@@ -40,7 +40,7 @@ const About = () => {
     }
   `)
   return (
-    <StyledSection color={colors.green}>
+    <StyledSection color={colors.green} id="hammocks">
       <Home src={HomeIcon} />
       <Title colors={colors}>{data.datoCmsAbout.title}</Title>
       <Content
