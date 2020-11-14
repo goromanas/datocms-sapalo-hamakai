@@ -65,7 +65,11 @@ const Form = ({ className }) => {
         data.append('spalva', color)
         data.append('miestas', values.city)
         console.log(data)
-        await Axios.post(URL, data, { headers })
+        await fetch(URL, {
+          method: 'POST',
+          headers: headers,
+          body: data
+        })
         message.success('Ačiū! Netrukus su jumis susisieksime')
         formik.resetForm()
       } catch (e) {
