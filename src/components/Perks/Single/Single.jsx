@@ -6,6 +6,7 @@ import { colors } from '../../../config/colors'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  /* max-width: 250px; */
   padding: 1rem 2rem;
   align-items: center;
 `
@@ -14,16 +15,16 @@ const Image = styled.img`
   width: 150px;
   object-fit: fit;
   border-radius: 75px;
-  border: 2px solid ${({ colors }) => colors.accent};
+  /* border: 2px solid ${({ colors }) => colors.accent}; */
 `
 const Title = styled.h4`
   padding-top: 1rem;
 `
 
-const Single = ({ perk }) => {
+const Single = ({ perk, icon }) => {
   return (
     <Wrapper>
-      <Image src="https://via.placeholder.com/150" alt={perk} colors={colors} />
+      <Image src={icon} alt={perk} colors={colors} />
       <Title>{perk}</Title>
     </Wrapper>
   )

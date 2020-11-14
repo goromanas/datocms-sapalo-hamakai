@@ -6,15 +6,21 @@ import Hero from '../components/Hero/Hero'
 import About from '../components/About/About'
 import Perks from '../components/Perks/Perks'
 import Footer from '../components/Footer/Footer'
-import Gallery from '../components/Gallery/Gallery'
+import Contact from '../components/Contact/Contact'
+import Info from '../components/Info/Info'
+import SEO from '../components/SEO'
 
 const IndexPage = ({ data }) => (
   <Layout>
     <Hero />
     <About />
+    <Info />
     <Perks />
-    <Gallery />
+    <Contact />
+
+    {/* <Gallery /> */}
     <Footer />
+    <SEO title="Pagrindinis" />
   </Layout>
 )
 

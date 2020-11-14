@@ -12,7 +12,8 @@ const StyledSection = styled(Section)`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  max-width: 1140px;
+  max-width: 1000px;
+  min-height: 50vh;
   margin: 0 auto;
 `
 
@@ -24,6 +25,9 @@ const Perks = () => {
           node {
             perk
             id
+            icon {
+              url
+            }
           }
         }
       }
@@ -32,7 +36,11 @@ const Perks = () => {
   return (
     <StyledSection color={colors.white}>
       {data.allDatoCmsPerk.edges.map(item => (
-        <Single key={item.node.id} perk={item.node.perk} />
+        <Single
+          key={item.node.id}
+          perk={item.node.perk}
+          icon={item.node.icon.url}
+        />
       ))}
     </StyledSection>
   )

@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 
 import HeroImageSrc from '../../../static/images/hero.png'
 import { colors } from '../../config/colors'
+import { media } from '../../config/media'
 import Section from '../Section/Section'
 import Menu from '../Menu/Menu'
 import ArrowDown from '../../../static/images/arrow-down.svg'
@@ -45,11 +46,17 @@ const ArrowDownImage = styled.img`
 `
 
 const HeroImage = styled.img`
-  max-width: 900px;
-  position: absolute;
-  top: 35%;
-  left: 30%;
   user-select: none;
+  max-width: 100%;
+  position: relative;
+  transform: translateX(10%);
+  ${media.lg`
+    max-width: 900px;
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    transform: translateX(-10%);
+  `};
 `
 
 const Hero = () => {
