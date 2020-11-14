@@ -78,7 +78,11 @@ const Form = ({ className }) => {
       onSubmit={formik.handleSubmit}
       colors={colors}
       className={className}
+      data-netlify="true"
+      name="Contact form"
     >
+      <input type="hidden" name="form-name" value="Contact Form" />
+
       <AntForm.Item
         validateStatus={
           formik.touched.name && formik.errors.name
