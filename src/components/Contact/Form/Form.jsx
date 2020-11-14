@@ -54,11 +54,6 @@ const Form = ({ className }) => {
       phone: Yup.number()
         .typeError('Neteisingas telefono numeris')
         .positive('Neteisingas telefono numeris')
-        // .test('len', 'Telefono numeryje per daug skaitmenų', val => {
-        //   if (val !== '') {
-        //     val.toString().length < 10
-        //   }
-        // })
         .integer('Neteisingas telefono numeris')
     }),
     onSubmit: async values => {
@@ -75,7 +70,7 @@ const Form = ({ className }) => {
         body: encode({
           'form-name': 'contact',
           ...values,
-          color
+          'Pasirinkta spalva': color
         })
       })
         .then(() => {
@@ -159,42 +154,22 @@ const Form = ({ className }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.phone}
-          // prefix={<MailOutlined />}
         />
       </AntForm.Item>
-      {/* <AntForm.Item>
-        <label htmlFor="color">Spalva</label>
-        <Select defaultValue="Medžio" suffixIcon={<BulbFilled />}>
-          <Option value="natural">Medžio</Option>
-          <Option value="white">Balta</Option>
-        </Select>
-      </AntForm.Item> */}
+
       <ColorSelect color={color} setColor={setColor} />
       <AntForm.Item>
         <label htmlFor="city">Jūsų miestas</label>
-        <Input allowClear id="city" name="city" />
-      </AntForm.Item>
-
-      {/* <AntForm.Item
-        validateStatus={
-          formik.touched.message && formik.errors.message ? 'error' : null
-        }
-        help={formik.errors.message}
-      >
-        <label htmlFor="message">Message</label>
-
-        <TextArea
+        <Input
           allowClear
           required
-          rows={4}
-          id="message"
-          name="message"
-          type="text"
+          id="city"
+          name="city"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.message}
+          value={formik.values.city}
         />
-      </AntForm.Item> */}
+      </AntForm.Item>
 
       <Button htmlType="submit" type="primary" colors={colors}>
         Siųsti
