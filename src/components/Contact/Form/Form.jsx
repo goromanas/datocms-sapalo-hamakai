@@ -57,24 +57,25 @@ const Form = ({ className }) => {
         .integer('Neteisingas telefono numeris')
     }),
     onSubmit: async values => {
-      try {
-        const data = new FormData()
-        data.append('vardas', values.name)
-        data.append('pastas', values.email)
-        data.append('telefonas', values.phone)
-        data.append('spalva', color)
-        data.append('miestas', values.city)
-        console.log(data)
-        await fetch(URL, {
-          method: 'POST',
-          headers: headers,
-          body: data
+      const data = new FormData()
+      data.append('vardas', values.name)
+      data.append('pastas', values.email)
+      data.append('telefonas', values.phone)
+      data.append('spalva', color)
+      data.append('miestas', values.city)
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+        .then(() => {
+          message.success('Ačiū! Netrukus su jumis susisieksime')
+          formik.resetForm()
         })
-        message.success('Ačiū! Netrukus su jumis susisieksime')
-        formik.resetForm()
-      } catch (e) {
-        message.error('Nepavyko išsiųsti užklausos. Bandykite dar kartą')
-      }
+        .catch(error =>
+          message.error('Nepavyko išsiųsti užklausos. Bandykite dar kartą')
+        )
     }
   })
   return (
@@ -83,9 +84,10 @@ const Form = ({ className }) => {
       colors={colors}
       className={className}
       data-netlify="true"
-      name="Contact form"
+      name="contact"
+      netlify-honeypot="bot-field"
     >
-      <input type="hidden" name="form-name" value="Contact Form" />
+      <input type="hidden" name="form-name" value="contact" />
 
       <AntForm.Item
         validateStatus={
