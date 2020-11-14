@@ -27,10 +27,15 @@ const StyledForm = styled.form`
 `
 
 // const { TextArea } = Input
-const { Option } = Select
 
 const Form = ({ className }) => {
   const [color, setColor] = useState('')
+
+  function encode(data) {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -67,7 +72,10 @@ const Form = ({ className }) => {
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(data).toString()
+        body: encode({
+          ...values,
+          color
+        })
       })
         .then(() => {
           message.success('Ačiū! Netrukus su jumis susisieksime')
