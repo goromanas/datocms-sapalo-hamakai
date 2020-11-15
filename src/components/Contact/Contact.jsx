@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import ForestBackground from '../../../static/images/forest.jpg'
 
-// import { colors } from '../../config/colors'
+import { media } from '../../config/media'
 import Form from './Form/Form'
 
 const Section = styled.div`
@@ -25,9 +25,13 @@ const Overlay = styled.div`
 const StyledForm = styled(Form)`
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
   z-index: 5;
+
+  ${media.lg`
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `}
 `
 
 const Contact = () => {

@@ -4,10 +4,15 @@ import { AnchorLink } from 'gatsby-plugin-anchor-links'
 import styled from 'styled-components'
 
 import { colors } from '../../config/colors'
+import { media } from '../../config/media'
 
 const MenuWrapper = styled.div`
-  display: flex;
+  display: none;
   align-items: center;
+
+  ${media.lg`
+      display: flex;
+  `};
 `
 const MenuItem = styled.div`
   padding: 0 1rem;

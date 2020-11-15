@@ -1,21 +1,19 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { Button } from 'antd'
 
 import ForestBackground from '../../../static/images/hammock_river.jpg'
 import { colors } from '../../config/colors'
 import Section from '../Section/Section'
-import HomeIcon from '../../../static/images/home.png'
-
-const Home = styled.img`
-  max-width: 100px;
-`
+import Button from '../Button/Button'
 
 const StyledSection = styled(Section)`
   justify-content: center;
   background: url(${({ background }) => background});
   background-attachment: fixed;
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
   position: relative;
 `
 const Content = styled.div`
@@ -29,6 +27,7 @@ const Title = styled.h1`
   font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
+  text-align: center;
 `
 const Overlay = styled.div`
   position: absolute;
@@ -63,15 +62,16 @@ const About = () => {
   return (
     <StyledSection id="hammocks" background={ForestBackground}>
       <ContentWrapper>
-        {/* <Home src={HomeIcon} /> */}
-
         <Title colors={colors}>{data.datoCmsAbout.title}</Title>
         <Content
           colors={colors}
           dangerouslySetInnerHTML={{ __html: data.datoCmsAbout.content }}
         />
 
-        <Button>{data.datoCmsAbout.buttonText}</Button>
+        <Button
+          label={data.datoCmsAbout.buttonText}
+          highlight={colors.dark}
+        ></Button>
       </ContentWrapper>
       <Overlay />
     </StyledSection>

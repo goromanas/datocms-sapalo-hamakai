@@ -43,7 +43,6 @@ const Form = ({ className }) => {
       name: '',
       email: '',
       phone: '',
-      color: '',
       city: ''
     },
     validationSchema: Yup.object({
@@ -59,20 +58,14 @@ const Form = ({ className }) => {
         .integer('Neteisingas telefono numeris')
     }),
     onSubmit: async values => {
-      const data = new FormData()
-      data.append('vardas', values.name)
-      data.append('pastas', values.email)
-      data.append('telefonas', values.phone)
-      data.append('spalva', color)
-      data.append('miestas', values.city)
+      values['spalva'] = color
 
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({
           'form-name': 'contact',
-          ...values,
-          'Pasirinkta spalva': color
+          ...values
         })
       })
         .then(() => {
@@ -95,7 +88,6 @@ const Form = ({ className }) => {
     >
       <Title>Siųsti užklausą</Title>
       <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="color" id="color" value={color} />
 
       <AntForm.Item
         validateStatus={
@@ -160,13 +152,10 @@ const Form = ({ className }) => {
           value={formik.values.phone}
         />
       </AntForm.Item>
-
-      <ColorSelect color={color} setColor={setColor} />
       <AntForm.Item>
         <label htmlFor="city">Jūsų miestas</label>
         <Input
           allowClear
-          required
           id="city"
           name="city"
           onChange={formik.handleChange}
@@ -174,6 +163,8 @@ const Form = ({ className }) => {
           value={formik.values.city}
         />
       </AntForm.Item>
+
+      <ColorSelect color={color} setColor={setColor} />
 
       <Button htmlType="submit" type="primary" colors={colors}>
         Siųsti
