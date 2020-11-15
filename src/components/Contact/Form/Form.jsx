@@ -1,17 +1,11 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import Axios from 'axios'
 import styled from 'styled-components'
-import { message, Input, Button, Form as AntForm, Select } from 'antd'
-import BulbFilled from '@ant-design/icons'
-
-// import { UserOutlined, MailOutlined } from '@ant-design/icons'
+import { message, Input, Button, Form as AntForm } from 'antd'
 
 import { colors } from '../../../config/colors'
 import ColorSelect from './ColorSelect'
-const URL = '/'
-const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
 const StyledForm = styled.form`
   display: flex;
@@ -25,7 +19,14 @@ const StyledForm = styled.form`
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
 `
-
+const Title = styled.div`
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+`
 // const { TextArea } = Input
 
 const Form = ({ className }) => {
@@ -42,6 +43,7 @@ const Form = ({ className }) => {
       name: '',
       email: '',
       phone: '',
+      color: '',
       city: ''
     },
     validationSchema: Yup.object({
@@ -91,7 +93,9 @@ const Form = ({ className }) => {
       name="contact"
       netlify-honeypot="bot-field"
     >
+      <Title>Siųsti užklausą</Title>
       <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="color" id="color" value={color} />
 
       <AntForm.Item
         validateStatus={

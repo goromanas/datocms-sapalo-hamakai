@@ -54,7 +54,7 @@ const HeroImage = styled.img`
     max-width: 900px;
     position: absolute;
     top: 35%;
-    left: 30%;
+    left: 35%;
     transform: translateX(-10%);
   `};
 `

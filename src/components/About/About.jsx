@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import { Button } from 'antd'
 
+import ForestBackground from '../../../static/images/hammock_river.jpg'
 import { colors } from '../../config/colors'
 import Section from '../Section/Section'
 import HomeIcon from '../../../static/images/home.png'
@@ -12,21 +13,41 @@ const Home = styled.img`
 `
 
 const StyledSection = styled(Section)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  background: url(${({ background }) => background});
+  background-attachment: fixed;
+  position: relative;
 `
 const Content = styled.div`
   text-align: center;
   color: ${({ colors }) => colors.white};
-  font-size: 1.2rem;
+  font-size: 1rem;
 `
 const Title = styled.h1`
   color: ${({ colors }) => colors.white};
-  font-weight: 300;
+  font-weight: 500;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.3rem;
+`
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1));
+`
+
+const ContentWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const About = () => {
@@ -40,14 +61,19 @@ const About = () => {
     }
   `)
   return (
-    <StyledSection color={colors.green} id="hammocks">
-      <Home src={HomeIcon} />
-      <Title colors={colors}>{data.datoCmsAbout.title}</Title>
-      <Content
-        colors={colors}
-        dangerouslySetInnerHTML={{ __html: data.datoCmsAbout.content }}
-      />
-      <Button>{data.datoCmsAbout.buttonText}</Button>
+    <StyledSection id="hammocks" background={ForestBackground}>
+      <ContentWrapper>
+        {/* <Home src={HomeIcon} /> */}
+
+        <Title colors={colors}>{data.datoCmsAbout.title}</Title>
+        <Content
+          colors={colors}
+          dangerouslySetInnerHTML={{ __html: data.datoCmsAbout.content }}
+        />
+
+        <Button>{data.datoCmsAbout.buttonText}</Button>
+      </ContentWrapper>
+      <Overlay />
     </StyledSection>
   )
 }

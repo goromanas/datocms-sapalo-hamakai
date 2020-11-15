@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import ForestBackground from '../../../static/images/forest.png'
+import ForestBackground from '../../../static/images/forest.jpg'
 
 // import { colors } from '../../config/colors'
 import Form from './Form/Form'
