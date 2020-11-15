@@ -2,6 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import { AnchorLink } from 'gatsby-plugin-anchor-links'
 
 // import HammockImage from '../../../static/images/hammock.png'
 import { colors } from '../../config/colors'
@@ -142,7 +143,9 @@ const Info = () => {
           <div
             dangerouslySetInnerHTML={{ __html: data.datoCmsInfo.content }}
           ></div>
-          <Button label="Siųsti užklausą" highlight={colors.green} />
+          <AnchorLink to={`/#order`}>
+            <Button label="Siųsti užklausą" highlight={colors.green} />
+          </AnchorLink>
         </ContentWrapper>
         <ImageWrapper>
           <Image1 fluid={data.datoCmsInfo.photo1.fluid} colors={colors} />

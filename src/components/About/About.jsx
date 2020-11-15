@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
+import { AnchorLink } from 'gatsby-plugin-anchor-links'
 
 import ForestBackground from '../../../static/images/hammock_river.jpg'
 import { colors } from '../../config/colors'
@@ -67,11 +68,12 @@ const About = () => {
           colors={colors}
           dangerouslySetInnerHTML={{ __html: data.datoCmsAbout.content }}
         />
-
-        <Button
-          label={data.datoCmsAbout.buttonText}
-          highlight={colors.dark}
-        ></Button>
+        <AnchorLink to={`/#order`}>
+          <Button
+            label={data.datoCmsAbout.buttonText}
+            highlight={colors.dark}
+          ></Button>
+        </AnchorLink>
       </ContentWrapper>
       <Overlay />
     </StyledSection>

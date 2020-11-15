@@ -36,7 +36,7 @@ const StyledForm = styled(Form)`
 
 const Contact = () => {
   return (
-    <Section background={ForestBackground}>
+    <Section background={ForestBackground} id="order">
       <StyledForm />
       <Overlay />
     </Section>
